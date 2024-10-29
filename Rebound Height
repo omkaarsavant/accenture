@@ -1,0 +1,39 @@
+Rebound Height
+Daniel has a ball. He wants to find the ball's rebound height, which he dropped from height H with an initial velocity V. After the Nth rebound the final velocity of the ball is V. Your task is to help him find and return an integer value representing the height to which the ball rebounds after N bounces.
+Note:
+
+H=Hxe", where H' is the rebound height, H is the initial height, e is the coefficient of restitution and is the number of bounces.
+e" V/Vn, where V is the initial velocity and V, is the final velocity 
+Input Specification:
+input1: An integer H, representing initial height input2: An integer V, representing initial velocity input3: An integer Vn, representing final velocity
+Output Specification:
+
+Return an integer value representing the height to which the ball 
+
+Example 1:
+inpur: 10
+input2:20
+input3:5
+
+Output: 160
+Explanation:
+Here H is 10, V is 20 and V, is 5. Now e" is V/V is 20/5 = 4 and H' = 10 x 42 = 160. Therefore, 160 is returned as the output.
+
+Example 2:
+input1: 16
+input2:5 
+input3:5
+Output: 16
+
+
+
+-->
+#include <iostream>
+using namespace std;
+int main() {
+    int h=16,v=5,vn=5,en,ans;
+    en=v/vn;
+    ans=h*(en*en);
+    cout<<ans;
+    return 0;
+}
