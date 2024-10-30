@@ -1,0 +1,68 @@
+There is a competition in a school. A qualifying score of 35 marks or more has been set as the cut-off to take part in this competition.
+There are N subjects taught in a class. The marks obtained in each subject in semesters 1 and 2 are given in the form of two arrays S1 and S2 respectively. The qualifying score is calculated in the following way.
+
+Step 1: Subtract the marks obtained in the ith subject in Semester 1 from the marks obtained in the i subject in Semester 2, ie, S2[i]-S1[i], where = 0, 1,2,....
+Step 2: Add the marks of upto P subjects with the maximum scores obtained after the subtraction in Step 1. This will give a student's qualifying score. The aim is to get a score equal to or greater than 35.
+If the qualifying score is greater than or equal to 35 then the student qualifies to participate in the competition, else they are disqualified. Your task is to find and return a string value, representing the result 'Qualified' or 'Disqualified' followed by the score achieved (separated by a space).
+
+Input Specification:
+input1: An integer value N, representing the number of subjects taught in a class.
+input2: An integer value P. representing the maximum number of subjects that can be considered to calculate the qualifying score.
+input3: An integer array S1, representing the marks obtained in the N subjects in Semester 1.
+input4: An integer array S2, representing the marks obtained in the N subjects in Semester 2
+
+Test Case 1
+Input:
+
+N = 3
+P = 2
+S1 = [10, 20, 30]
+S2 = [40, 50, 60]
+Explanation:
+
+Calculate the difference array: [30, 30, 30]
+Take the top P = 2 scores: [30, 30]
+Sum of top scores: 30 + 30 = 60
+Output: "Qualified 60"
+
+Test Case 2
+Input:
+
+N = 5
+P = 3
+S1 = [15, 25, 35, 20, 30]
+S2 = [35, 30, 40, 25, 40]
+Explanation:
+
+Difference array: [20, 5, 5, 5, 10]
+Top P = 3 scores: [20, 10, 5]
+Sum: 20 + 10 + 5 = 35
+Output: "Qualified 35"
+
+-->
+
+#include <iostream>
+#include <algorithm>
+using namespace std;
+int main() {
+int n=4;
+int S1[n]={50,60,70,80},S2[n]={10,20,30,40},p=2,marks[n],result=0;
+
+for(int i=0;i<n;i++)
+{
+    marks[i]=S2[i]-S1[i];
+}
+sort(marks, marks+n,greater<int>());
+for(int i=0;i<p;i++)
+{
+    result+=marks[i];
+}
+if(result>=35)
+{
+    cout<<"Qualified "<<result;
+}
+else{
+    cout<<"Disqualified "<<result;
+}
+    return 0;
+}
