@@ -1,0 +1,49 @@
+You are given 3 integers A, B and N. Your task is to make either of A or B strictly greater than N. You can perform any of the following operations any number of times. Increment A by B.
+ Increment B by A.
+Your task is to find and print the minimum number of operations required to make either of A or B strictly greater than N.
+Input Format:
+The input consists of a single line:
+The line contains three space-separated integers A, B and N.
+The input will be read from the STDIN by the candidate
+Output Format:
+Print the number that represents minimum number of operation required to make either of A or B strictly greater than N. The output will be matched to the candidate's output printed on the STDOUT
+Constraints:
+ 1 ≤ A ≤ 10^9 
+1 ≤ B≤ 10^9 
+1 ≤ N ≤ 10^9 
+A≤N 
+B≤N 
+Input:
+1 2 3 
+Output:
+2
+Explanation:
+You can increment A by B twice to make it strictly greater than N.
+
+Input 1 2 10
+Output 4
+-->
+
+#include<iostream>
+using namespace std;
+int main()
+{
+    int a=5,b=5,n=5;
+    int steps;
+    while(a<=n && b<=n)
+    {
+        if(a>b)
+        {
+            b+=a;
+            
+        }
+        else if(b>a){
+            a+=b;
+            
+        }else if(a==b || b==a){
+            a+=b;
+        }
+        steps++;
+    }
+    cout<<steps;
+}
