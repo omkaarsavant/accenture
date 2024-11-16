@@ -1,0 +1,80 @@
+
+You are given an integer N denoting the number of people in a society. But not all of them are educated. So, the uneducated ones decided to learn from the educated people and started going to their houses daily. Find and print the sum of minimum distance traveled by each uneducated person to get educated. Houses of people in the society are represented by binary string S where 1 represents educated people and 0 represents uneducated people.
+Input format:
+The input consist of two lines:
+The first line contains an integer N denoting the number of people in the society.
+The second line contains a string S denoting the houses of people in the society.
+The input will be read from the STDIN by the candidate
+Output format:
+Print a number X traveled by uneducated people of the society each day. If no one is educated then print "-1".
+The output will be matched to the candidate's output printed on the STDOUT
+Constraints:
+1≤ N ≤ 10^5
+Example
+Input:
+100100
+Output: 5
+Explanation:
+1st and 4th person in the society are educated.
+4
+Now to get educated the 2nd person will go to 1st and the 3rd person will go to the 4th person, so the distance travelled by 2nd and 3rd person is 1 unit each. Similarly the 5th person will go to the 4th person to get educated so the distance travelled by 5th and 6th person is 1 unit and 2 unit respectively. Hence the total distance travelled is 1+1+1+2 = 5.
+
+
+-->
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    int n = 6, sum = 0;
+    string s = "100100";
+
+    // Edge case: Check if there are no educated people
+    bool hasEducated = false;
+    for (int i = 0; i < n; i++) {
+        if (s[i] == '1') {
+            hasEducated = true;
+            break;
+        }
+    }
+
+    if (!hasEducated) {
+        cout << "-1" << endl;
+        return 0;
+    }
+
+    // Continue with the rest of the logic...
+    int dist[n] = {0};
+    for (int i = 0; i < n; i++) {
+        if (s[i] == '0') {
+            int stepsfw = n + 1, stepsbw = n + 1;
+
+            // Forward loop to find the nearest '1'
+            for (int j = i + 1; j < n; j++) {
+                if (s[j] == '1') {
+                    stepsfw = j - i;
+                    break;
+                }
+            }
+
+            // Backward loop to find the nearest '1'
+            for (int j = i - 1; j >= 0; j--) {
+                if (s[j] == '1') {
+                    stepsbw = i - j;
+                    break;
+                }
+            }
+
+            // Assign the minimum of forward and backward steps
+            dist[i] = (stepsfw < stepsbw) ? stepsfw : stepsbw;
+        }
+    }
+
+    // Calculate the total sum of distances
+    for (int a = 0; a < n; a++) {
+        sum += dist[a];
+    }
+
+    cout << sum << endl;
+    return 0;
+}
