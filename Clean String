@@ -1,0 +1,48 @@
+Clean String
+You are given two strings A and B. Your task is to find and return a string representing the leftover string in A after removing all the letters that exist in string B. Return "Empty" if the output does not contain any value.
+Note:
+Strings A and B contain English alphabets in upper case only.
+A single alphabet in B can replace all the occurrences of that alphabet in A.
+Input Specification:
+input1: A string A 
+input2: A string B
+Output Specification:
+Return a string representing the leftover string in A after removing all the letters that exist in string B. Return "Empty" if the output does not contain any value.
+Example 1:
+input1 : AABBCC 
+input2: AB
+Output: CC
+
+-->
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string a = "AABBCC";
+    string b = "AB";
+    string output = "";  // New string to store unmatched characters
+
+    // Iterate through each character in 'a'
+    for (int i = 0; i < a.size(); i++) {
+        bool matched = false;
+        for (int j = 0; j < b.size(); j++) {
+            if (a[i] == b[j]) {
+                matched = true;  // Mark as matched
+                break;  // Exit the inner loop if a match is found
+            }
+        }
+        if (!matched) {
+            output += a[i];  // Append unmatched character to output
+        }
+    }
+
+    // Check if the resulting string is empty
+    if (output.empty()) {
+        cout << "empty";
+    } else {
+        cout << output;
+    }
+
+    return 0;
+}
