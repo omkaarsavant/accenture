@@ -1,0 +1,20 @@
+Bitwise Operation
+
+You are given two integers A and B. Your task is to find and return an integer representing the value of their Bitwise OR operation
+Input Specification:
+input1: An integer value A 
+input2: An integer value B
+Output Specification:
+Return an integer representing the value of their bitwise OR operation.
+
+---->
+#include<iostream>
+using namespace std;
+int main()
+{
+    int a=-1,b=5;
+    int result=0;
+    
+    result=a|b;
+    cout<<result;
+}
