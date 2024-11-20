@@ -1,0 +1,61 @@
+Maximize Pair Product
+Noah is given an integer array A of length N. He must perform the following operations on the array:
+• Select any integer pair/s from the array with their sum equal to 18.
+• From this select the pair with the maximum product such that the first element of the pair is greater than the second element of the pair.
+Your task is to help Noah find and return a pair in the form of an integer array which satisfies the conditions mentioned.
+Input Specification:
+input1: An integer value N, representing the size of array A. 191 input2: An integer array A.
+Output Specification:
+Return a pair in the form of an integer array which satisfies the conditions mentioned.
+input1:8
+input2: (11,1,2,8,10,11,15,7)
+Output: (10,8)
+Explanation:
+The given array is (11.1,2,8,10,11,15,7)
+There are four pairs in the array, (10,8), (8,10), (11.7) and (7,11) with their sum equal to 18. Pair (8,10) and (7,11) are not valid as the first element in each pair is less than the second element in the pair.
+The product of the pair (10,8) is 80 and that of (11.7) is 77.
+Since the pair (10,8) has a higher product. (10,8) is returned as the output.
+
+-->
+#include <iostream>
+
+using namespace std;
+
+void maximizePairProduct(int N, int A[], int result[]) {
+    int maxProduct = 0; // Initialize max product to the smallest integer value
+
+    // Iterate over all possible pairs
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            if(A[i]!=A[j]){
+            if (A[i] + A[j] == 18 && A[i] > A[j]) {
+                int product = A[i] * A[j]; // Calculate product
+                // Update result if a higher product is found
+                if (product > maxProduct) {
+                    maxProduct = product;
+                    result[0] = A[i];
+                    result[1] = A[j];
+                }
+            }
+            }
+        }
+    }
+}
+
+int main() {
+    int N = 8;
+    int A[] = {11, 1, 2, 8, 10, 11, 15, 7};
+
+    int result[2] = {-1, -1}; // To store the resulting pair
+
+    maximizePairProduct(N, A, result);
+
+    // Output the result
+    if (result[0] == -1 && result[1] == -1) {
+        cout << "No valid pair found." << endl;
+    } else {
+        cout << "Output: (" << result[0] << ", " << result[1] << ")" << endl;
+    }
+
+    return 0;
+}
