@@ -1,0 +1,40 @@
+Clock Problem
+Your friend has problem in reading the time if a clock follows 24-hour format, so you to help him out. You have two integers X and Y. Your task is to find and return an integer value representing the product of these two integers in the 12- hour system.
+Input Specification:
+input1: An integer value X 
+input2: An integer value Y
+
+Output Specification:
+Return an integer value representing the product of the two integers in the 12-hour system.
+
+Example 1: 
+input1:4 
+input2:5
+Output: 8
+
+-->
+#include <iostream>
+#include <cmath> 
+using namespace std;
+
+int main() {
+    int x = 123, y = 456; // Example inputs
+    int t = x * y;
+
+    // Handle zero product
+    if (t == 0) {
+        cout << 12; // 0 in 12-hour clock is treated as 12
+    } else {
+        // Map the absolute value of the product to the 12-hour clock
+        int result = abs(t) % 12;
+
+        // If remainder is 0, map it to 12 (since 0 maps to 12 in 12-hour format)
+        if (result == 0) {
+            result = 12;
+        }
+
+        cout << result;
+    }
+
+    return 0;
+}
