@@ -1,0 +1,51 @@
+
+Find Dividend
+You are given array A, having some dividends. Further, you are given 3 numbers D, Q and R. A dividend can be found using a rule that
+states:
+Dividend Divisor x Quotient + Remainder
+Your task is to find and return an integer value representing the index of the dividend if present in array. If dividend not found return -1.
+Input Specification:
+input1: An integer array A, containing dividends
+input2: An integer D, representing divisor
+input3: An integer Q, representing quotient
+input4: An integer R, representing remainder
+input5: An integer N, representing length of array A
+
+Output Specification:
+Return an integer value representing the index of the dividend if present in array. If dividend not found return -1.
+Example 1:
+input1: (12,24,35,9) input2: 8 input3:3 input4:0 inputs: 4
+Output: 1
+Explanation:
+Here A = (12,24,35,9) and D = 8 and Q is 3 and R is 0 and N is 4.
+Now according to rule
+
+24=8x3 + 0 and the index value is 1
+
+The index where the rule is followed 1. Therefore, 1 is returned as output.
+
+--->
+#include <iostream>
+using namespace std;
+
+int findDividendIndex(int A[], int D, int Q, int R, int N) {
+    for (int i = 0; i < N; i++) {
+        if (A[i] == D * Q + R) {
+            return i; // Return the index if the condition matches
+        }
+    }
+    return -1; // Return -1 if no such element is found
+}
+
+int main() {
+    int A[] = {12, 24, 35, 9}; // Input array
+    int D = 8;  // Divisor
+    int Q = 3;  // Quotient
+    int R = 0;  // Remainder
+    int N = 4;  // Length of the array
+
+    int result = findDividendIndex(A, D, Q, R, N);
+    cout << result << endl; // Output the result
+
+    return 0;
+}
