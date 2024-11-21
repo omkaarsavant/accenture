@@ -1,0 +1,33 @@
+
+Even Odd
+Jack has an array A of length N. He wants to label whether the number in the array is even or odd. Your task is to help him find and return a string with labels even or odd in sequence according to which the numbers appear in the amay
+Input Specification:
+input1: An integer array A representing the array of numbers input2: A integer N representing the length of array
+Output Specification:
+Return a string with labels even or odd in sequence according to which the numbers appear in the array.
+Example 1:
+input1: [1.2.3.4.5.6]
+input2:6
+Output: OddEvenOddEvenOddEven
+
+-->
+
+#include <iostream>
+using namespace std;
+int main()
+{
+    int A[]={2,3,4};
+    int n=sizeof(A)/sizeof(A[0]);
+    
+    for(int i=0;i<n;i++)
+    {
+        if(i%2==0)
+        {
+            cout<<"Even";
+        }
+        else{
+            cout<<"Odd";
+        }
+    }
+    return 0;
+}
